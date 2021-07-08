@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>v-bind :: 속성같은 것들을 모델의 데이터로 연결시키는 방법</title>
+<!-- Vue cdn -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(function() {
+		var model = {
+			message1 : "Mustache 방법으로 출력하기",
+			message2 : "<h2>기본 디렉티브 출력방법1</h2>",
+			message3 : "<h2>기본 디렉티브 출력방법2</h2>",			
+			
+			prop1 : 'center',
+			prop2 : 'http://sample.bmaster.kro.kr/photos/61.jpg'
+		}
+		
+		var app = new Vue({
+			el:'#app',
+			data:model
+		});
+		
+	});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="app">
+		<h2>{{message1}}</h2>
+		<h2 v-text="message2"></h2>
+		<h2 v-html="message3"></h2>
+		
+		<!-- 속성을 지정... 속성의 값으로 prop1, prop2를 바인딩 
+			속성이름에 속성값을 바인딩 할때
+			v-bind:속성이름="모델이름"  -> 원래 이건데 줄여서
+			:속성이름="모델이름"  -> 이걸로 쓸 수 있다		
+		-->
+		<!-- 
+		<h3 v-bind:align="prop1">안녕하세요(가운데정렬 설정)</h3>
+		<img v-bind:src="prop2">
+		 -->
+		<h3 :align="prop1">안녕하세요(가운데정렬 설정)</h3>
+		<img :src="prop2">
+	</div>
+	<div>
+	
+	</div>
+</body>
+</html>

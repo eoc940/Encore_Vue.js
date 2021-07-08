@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+<!-- Vue cdn -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<!-- 1. 화면구성 -->
+<div id="app">
+	<!-- {{}} 은 mustache expression 혹은 보간법이라고 한다 -->
+	<h2>{{message}}</h2>
+</div>
+
+<script>
+	/* 2. 데이타 :: Model */
+	var model = {message : "Vue.js Start!!"}
+
+	/* 3. 뷰모델 :: ViewModel - el(element), data */
+	new Vue({
+		//화면 부분중에서 어느 영역에 적용할건지를 지정한다
+		el : '#app',
+		// el에 적용된 화면에서 출력할 데이타(정보)를 지정한다
+		data : model
+	});
+	/*
+	 * app라는 Vue객체가 뷰모델(Vue model)이다.
+	 * Vue 객체는, app 인스턴스는
+	 * 모델과 뷰를 지켜보면서 모델의 데이터 변화를 뷰에 반영하는 역할을 한다
+	 * 그런 의미에서 뷰모델 app은 뷰와 모델을 연결하는 중개자 역할이다
+	 * 
+	 * ~.html 파일이 로드된다는 것은 해당 파일의 내용(태그)들이 DOM 구조로 메모리에 순서대로 올라가는 것을 뜻한다
+	 * 
+	 * Vue객체는 el, data 속성을 기본적인 속성으로 가지는데
+	 * el은 화면중에서 어느 영역을 Vue객체가 관찰대상으로 삼을것인지를 지정
+	 * data는 관찰대상으로 삼고있는 영역에 적용할 데이터를 지정해서 보관하는 속성
+	 */
+	Vue.config.devtools = true;
+</script>
+
+</body>
+</html>

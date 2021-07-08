@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>v-bind :: 속성같은 것들을 모델의 데이터로 연결시키는 방법</title>
+<!-- Vue cdn -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>v-model : 양방향 데이터 바인딩</title>
+<script>
+
+
+</script>
+</head>
+<body>
+<div id="app">
+	<h3>{{message}}</h3>
+	<input type="text" name="greet" v-model="message">
+</div>
+<script>
+	var app = new Vue({
+		el:'#app',
+		data:{message:"Hello Quick Vue Service~!!"}
+	});
+</script>
+</body>
+</html>

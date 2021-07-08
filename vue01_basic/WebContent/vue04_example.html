@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+<!-- Vue cdn -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(function() {
+		$('table')
+		var person = {name:"형근", age:28, address:"봉천"}
+		var info = new Vue({
+			el:"#info",
+			data:person
+		});
+	});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+<div id="info">
+	<table border="1">
+		<tr><td>이름</td><td>{{name}}</td></tr>
+		<tr><td>나이</td><td v-text="age"></td></tr>
+		<tr><td>사는곳</td><td v-html="address"></td></tr>
+	</table>
+</div>
+</body>
+</html>
+
+<!-- 
+++++++++++++++++++++ 해보기 ++++++++++++++++++++++
+모델 데이터에 이름, 나이, 사는곳 관련 데이터를 지정
+var person = {
+	name : '',
+	age : 22,
+	address : ''
+}
+화면을 지정하고 모델의 데이터가 테이블 형식으로 출력되도록
+
+ -->

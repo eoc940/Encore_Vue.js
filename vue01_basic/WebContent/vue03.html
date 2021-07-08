@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+<!-- Vue cdn -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>Insert title here</title>
+<script>
+	$(function() {
+		$('h2').text('시작');
+		var model = {message :'Vue 시작입니다'}
+		var app = new Vue({
+			el:'#app',
+			data:model
+		});
+	});
+</script>
+</head>
+<body>
+<!-- 1. 화면구성 -->
+<div id="app">
+	<h2 align="center">START!!</h2>
+	<h3>{{message}}</h3>
+</div>
+</body>
+</html>

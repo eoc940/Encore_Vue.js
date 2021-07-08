@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>v-bind :: 속성같은 것들을 모델의 데이터로 연결시키는 방법</title>
+<!-- Vue cdn -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(function () {
+	var model={
+		name : "cake",
+		image : "cake.jpg",
+		price : 10000,
+		width : 60
+	}
+	var app = new Vue({
+		el:'#app',
+		data:model
+	}); 
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="app">
+		<table border="2">
+			<caption>내가 가장 좋아하는 Food</caption>
+			<thead>
+				<tr>
+					<th>Food이름</th><th>Image</th><th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td v-html="name"></td><td><img :src="image" :width="width"></td><td>{{price}}원</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
