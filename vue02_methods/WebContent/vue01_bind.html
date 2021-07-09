@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+	<input type="text" id="aa"><br><br>
+	<img v-bind:src="imagepath" width="300px" height="300px">
+</div>
+<script>
+	var model = {
+		imagepath:"./image/cake.jpg"
+	}
+	new Vue({
+		el:'#app',
+		data:model
+	})
+</script>
+</body>
+</html>
