@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+<h2>v-for와 함께 v-if이용하기</h2>
+<div id="app">
+	
+	<label>ENCORE 각 지구별로 개설된 클래스 갯수</label>
+	<input type="number" v-model.number="count"><!-- v-model로 vue의 count와 양방향으로 만든다-->
+	<!-- input에서 넘어간 데이터는 타입을 뭘로하던 string으로 넘어간다. 따라서 v-model.number로 해준다-->
+	<ul>
+		<!-- 
+		javascript에서는 
+		0 == ''  0 == '0'  1 == true   ->  세개 다 true이다
+		===를 사용하면 값과 타입이 모두 맞아야 true가 된다
+		 -->
+		<li v-for="encore,index in encores" v-if="encore.count===count">
+		
+			{{index+1}}. {{encore.name}}, {{encore.count}}개 클래스
+		
+		</li>
+	</ul>
+</div>
+
+<script>
+	new Vue({
+		el:'#app',
+		data: {
+			count:0,//뒤에 리스트가 들어오므로 초기값을 넣어주어야 한다
+			encores:[
+				{name:'영등포구',count:0},
+				{name:'남부지구',count:5},
+				{name:'서초지구',count:7}
+			]
+		}
+	});
+</script>
+</body>
+</html>

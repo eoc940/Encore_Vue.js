@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>v-on:click = ""</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+	<div v-html="title"></div>
+	<!-- v:on click, @click은 changeName, changeName() 둘 다 가능하지만 괄호 그냥 빼주고 사용하자 -->
+	<div v-on:click="changeName">{{title}}</div>
+	<div @click="changeName()">{{title}}</div>
+</div>
+<script>
+	var model = {title:'<h2>ENCORE</h2>'}
+	new Vue({
+		el:'#app',
+		data:model,
+		methods:{
+			changeName:function() {
+				this.title='<h1>Friday~~!!</h1>'
+			}
+		}
+	});
+</script>
+</body>
+</html>

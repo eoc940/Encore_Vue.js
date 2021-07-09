@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+<div id="first">
+	<div><h3 v-html="title"></h3></div>
+</div>
+<div id="second">
+	<div onclick="hello('James');">일반 자바스크립트 :: 클릭 이벤트</div>
+</div>
+<input id="third" onclick="hello2(this);">
+
+
+<script>
+	var model = {title:'Encore'}
+	var app = new Vue({
+		el:'#first',
+		data:model
+	});
+	
+	function hello(name) {
+		//hello 함수 인자값 name을 Vue title값으로 할당하려면..
+		//Vue 외부 메서드에서 Vue 속성에 접근하려면 Vue인스턴스명.$data.속성이름을 사용해서 접근한다, 혹은 Vue인스턴스명.속성이름도 가능하다
+		//app.$data.title = name;
+		app.title = name;
+	}
+	function hello2(name) {
+		app.title = name.value;
+		//위 코드는 그냥 자바스크립트로 쓰면 대충
+		if(name.value == document.getElementById("third").value) alert(app.title);
+	}
+</script>
+</body>
+</html>

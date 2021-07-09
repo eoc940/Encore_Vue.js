@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="app">
+		<div v-text="title"></div>
+		<div v-html="title"></div>
+		<div>{{title}}</div>
+		<div>{{showHrm()}}</div>
+		<div>{{showMyName('James')}}</div>
+		<button @click="changeName">{{title}}</button>	
+	</div>
+	
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				title:'<h2>ENCORE</h2>'
+			},
+			methods:{
+				changeName : function() {
+					this.title = "ENCORE HRM ENCORE HRM"
+				},
+				showHrm : function() {
+					return "ENCORE HRM " + new Date();
+				},
+				showMyName : function(name, $event) { // event 인자값은 이벤트 객체를 의미하는 인자값일 경우에는 반드시 $을 붙여야 한다
+					return name + ", " + new Date();
+				}
+			}
+			
+		});
+	</script>
+</body>
+</html>
