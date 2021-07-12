@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>template v-for 태그를 사용하면 태그안의 내용만 출력되고 template 태그는 남지 않는다</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style type="text/css">
+	#flag_section{
+		width: 70%;
+		height: 200px;
+		margin: 0 auto;
+		padding: 20px;
+		text-align: center;
+		font-size: 14px;
+	}
+	#tid{
+		width: 50%;
+		margin: 0 auto;
+	}
+</style>
+
+</head>
+<body>
+<div id="flag_section">
+	<h2>National Flags</h2>
+	<template v-for="flag in flags">
+		<label><span v-html="flag.name"></span></label>
+		<input type="text" :value="flag.korname"><!-- 한국식 나라이름 -->
+		<img :src="flag.flag">
+		<br>
+	</template>
+</div>
+<script>
+	var model = {
+		flags:[
+			{
+				name:'Ghana',
+				korname:'가나',
+				flag:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_Ghana.svg/44px-Flag_of_Ghana.svg.png'
+			},
+			{
+				name:'South Korea',
+				korname:'대한민국',
+				flag:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/44px-Flag_of_South_Korea.svg.png'
+			}
+		]
+	}
+	new Vue({
+		el:'#flag_section',
+		data:model
+	})
+</script>
+</body>
+</html>

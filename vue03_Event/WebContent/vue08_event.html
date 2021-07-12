@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+	<form action="vue07_event_target.html" @submit.prevent="dataCheck">
+	아이디 :
+	<input type="text" placeholder="아이디 입력.." v-model="id" id="id">
+	<input type="text" placeholder="아이디 입력.." v-model="id" @keyup.enter="sendId">
+	<input type="text" placeholder="아이디 입력.." v-model="id" @keyup.13="submit"><!-- 자판에서 enter와 13은 같다. 즉 엔터치는 것이다 -->
+	<button @click="sendId">결과보기</button>
+	</form>
+</div>
+<script>
+	new Vue({
+		el:'#app',
+		data:{
+			id:''
+		},
+		methods:{
+			sendId:function() {
+				alert(this.id);
+			},
+			dataCheck() {
+				alert(document.getElementById("id").getAttribute("placeholder"));
+			}
+		}
+	});
+</script>
+</body>
+</html>

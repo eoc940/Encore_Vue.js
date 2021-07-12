@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>v-cloak</title>
+<!-- 
+v-cloak 디렉티브는
+자바스크립트의 로딩이 끝나기 전까지 해당 엘러먼트에 남아서 display되지 않도록 가려주는 역할을 하는 디렉티브이다
+웹 페이지가 열릴때 처음에 자바스크립트가 완전히 실행되기 전에는 원하는 출력값이 아닌
+다른 출력값 {{title}}이 먼저 출력되어 버리는 경우가 종종 발생한다
+v-cloak를 사용하면 이런 현상을 방지할 수 있는데
+이때 css 설정도 함께 사용해야 한다.
+
+ -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+	[v-cloak] {display:none;}
+</style>
+</head>
+<body>
+	<div id="app">
+		<h2 v-cloak>{{title}}</h2>
+	</div>
+	<script>
+		setTimeout(() => {
+			new Vue({
+				el:'#app',
+				data:{
+					title:"안녕하세요"
+				}
+			});
+		}, 2000); // 2초뒤에 { }안에 있는 코드가 동작
+		
+	</script>
+</body>
+</html>

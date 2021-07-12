@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<!-- 
+v-once
+해당 element를 단 한번만 렌더링 한다.
+정적인 엘리먼트를 저리할 때 사용하는 기술
+ -->
+	<div id="app">
+		<h2 v-once>{{'초기값 : '+count}}</h2> 
+		<h2>{{'현재값 : '+count}}</h2>
+
+		<button @click="count++">+</button> <!-- 버튼 클릭하면 count를 증가 | 버튼 클릭하면 함수 호출 -->
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				count:1
+			}
+		})
+	</script>
+</body>
+</html>
