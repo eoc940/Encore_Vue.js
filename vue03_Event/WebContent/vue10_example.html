@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+	<h2>ENCORE INFORMATION</h2><br>
+	<h3>Sign Up Form</h3><br>
+	<form action="">
+	아이디 <input type="text" v-model="id"><br>
+	패스워드 <input type="password" v-model="pw"><br>
+	이름 <input type="text" v-model="name"><br>
+	주소 <input type="text" v-model="addr"><br>
+	전화번호 <input type="text" v-model="phone"><br>
+	<input type="button" value="사원추가" @click.prevent="insert">
+	<input type="text"><br> 
+	</form>
+	<span>{{concatInfo}}</span>	
+</div>
+<script>
+	var model = {
+		id:'', pw:'',name:'',addr:'',phone:''
+	}
+	
+	var app = new Vue({
+		el:'#app',
+		data: model,
+		computed:{
+			concatInfo:function() {
+				var str = '';
+				str += this.id + " " + this.pw + " " + this.name + " " + this.addr + " " + this.phone;
+				return str;
+			},
+			insert() {
+				if(this.id==='') alert("아이디를 입력하세요");
+				if(this.pw==='') alert("비밀번호를 입력하세요");
+			}
+		}
+		
+	});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <style>
+    body {background-color: #ffffff;}
+    #second  > h2 { margin:auto; padding:0px; text-align:center; color: blue;}	
+    .red {color: red;}
+    #signup-form{width:70%;height:200px; margin:auto; padding:20px; text-align:center; font-family: serif; font-size: 14px;}
+    #signup-result{width:70%;height:200px; margin:auto; padding:20px; text-align:center; font-family: serif; font-size: 14px;color: red; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="second">
+	<h2 v-html="title"></h2>
+</div>
+<section id="signup_section">
+<div id="signup-form">
+	<h2>Sign Up Form</h2>
+	<form id="frm" action="main.do" method="post" @submit.prevent="dataCheck">
+	<label><span>아이디</span></label>
+	<input type="text" id="id" v-model="id" placeholder="아이디 입력.."><br>
+	
+	<label><span>패스워드</span></label>
+	<input type="password" id="password" v-model="password" placeholder="패스워드 입력.."><br>
+	
+	<label><span>이름</span></label>
+	<input type="text" id="name" v-model="name" placeholder="이름 입력.."><br>
+	
+	<label><span>주소</span></label>
+	<input type="text" id="address" v-model="address" placeholder="주소 입력.."><br>
+	
+	<label><span>전화번호</span></label>
+	<input type="text" id="phone" v-model="phone" placeholder="전화번호 입력.."><br>
+	
+	<button type="submit">사원추가</button>
+	<label><input @keyup.enter="submit">키엔터</label>
+	</form>
+</div>
+<div id="signup-result">
+	<fieldset>
+	<span v-html="id"></span>
+	<span v-html="password"></span>
+	<span v-html="name"></span>
+	<span v-html="address"></span>
+	<span v-html="phone"></span>
+	</fieldset>
+</div>
+</section>
+
+<script>
+	var signup_section = new Vue({
+		el:'#signup_section',
+		data:{
+			id:'',
+			password:'',
+			name:'',
+			address:'',
+			phone:''			
+		},
+		methods:{
+			dataCheck(){
+				if(this.id==""){alert(document.getElementById("id").getAttribute("placeholder"));				}
+				if(this.password==""){alert(document.getElementById("password").getAttribute("placeholder"));				}
+			}
+		}
+	});
+    var second = new Vue({
+	   el:'#second',
+	   data:{title:'ENCORE INFORMATION'}
+    });
+
+</script>
+</body>
+</html>

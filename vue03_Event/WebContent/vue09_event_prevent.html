@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+	<h2>a 태그로 페이지 이동하기...</h2>
+	<h3>페이지가 안넘어가도록 이벤트를 막는 방법</h3>
+	<a href="vue08_event.html" @click="sendMsg1">페이지 이동 막기1</a><br>
+	<a href="vue08_event.html" @click="sendMsg2">페이지 이동 막기2</a><br><!-- 페이지 이동 막기 2,3은 같은 것이다 -->
+	<a href="vue08_event.html" @click.prevent="sendMsg1">페이지 이동 막기3</a><br>
+</div>
+<script>
+	new Vue({
+		el:'#app',
+		methods:{
+			sendMsg1(){
+				alert('클릭 이벤트 이동막기...');
+			},
+			sendMsg2(event){
+				event.preventDefault();
+				alert("클릭 이벤트 이동막기2....");
+			}
+		}
+	});
+</script>
+</body>
+</html>

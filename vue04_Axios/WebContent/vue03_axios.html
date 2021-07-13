@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script><!-- axios cdn 추가 -->
+<title>Insert title here</title>
+<style >
+	body {background-color: #ffffff;}
+	#second>h2 {margin: auto; text-align: center; color: blue;}
+	#tid{border: 1px blue; margin: auto; text-align: center; border-collapse: collapse;}
+	td{ border: 1px solid green;}
+	
+</style>
+</head>
+<body>
+
+<div id="second">
+	<h2>ENCORE SAFE FOOD</h2>
+
+</div>
+<div id="app">
+	<section v-if="errored">
+		<p>Error In Axios Transport...</p>
+	</section>
+	<section v-else><!-- 에러가 안나면 table이 출력된다 -->
+	<div v-if="loading">Loading...</div>
+	<table>
+		<thead>
+			<tr style="border:1px solid green">
+				<th>분류</th><th>이름</th><th>이미지</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr v-for="f in info" style="border: 1px solid green">
+				<td>{{f.productGb}}</td>
+				<td>{{f.prdlstNm}}</td>
+				<td><img :src='f.imgurl1' width="60px" height="60px"></td>
+			</tr>
+		</tbody>
+	</table>
+	</section>
+</div>
+<script>
+	new Vue({
+		el:'#app',
+		//data:{} 정적인 데이터를 바인딩 할때 사용하는 기법임. 동적인(반응형) 데이터는 이거 대신 data(){} 쓴다
+		data(){
+			return{
+				info:null,
+				errored:false,
+				loading:true
+			}
+		},
+		//axios기술....mounted()에서 해줘야 한다...
+		mounted(){
+			//axios.get('http://localhost:127.0.0.1:7788/api/findAllEmployees') 나중에 rest에서 이렇게 하면 된다
+			axios
+				.get('./food.json') //요청..
+				.then(response=>(this.info=response.data))//응답..서버에서 날라온 response.data를 this.info에 넣어준다
+				.catch(error=>{
+					console.log(error);
+					this.errored = true; //여기서 error값 변경
+				})
+				.finally(()=>this.loading = false) //여기서 loading이 끝났음을 알려준다
+
+		}
+	});
+</script>
+</body>
+</html>
+
+
+
+
+
+

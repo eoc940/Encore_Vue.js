@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script><!-- axios cdn 추가 -->
+<title>Insert title here</title>
+</head>
+<body>
+<div id="app">
+	<table border="1px solid black">
+		<thead id="head">
+			<tr>
+				<th>사원 아이디</th><th>사원명</th><th>부서</th><th>직책</th><th>연봉</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr v-for="m in info">
+				<td>{{m.id}}</td>
+				<td>{{m.name}}</td>
+				<td>{{m.dept_id}}</td>
+				<td>{{m.title}}</td>
+				<td>{{m.salary | roundTwo}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+<script>
+	var app = new Vue({
+		el:'#app',
+		data(){
+			return{
+				info:null,
+				errored:false,
+				loading:true
+			}
+		},
+		mounted(){
+			axios
+				.get('http://localhost:7788/api/findAllEmployees')
+				.then(response=>(this.info=response.data))
+				.catch(error=>{
+					console.log(error);
+					this.errored = true;
+				})
+				.finally(()=>this.loading = false)
+		},
+		filters:{
+			roundTwo(value) {
+				return value.toFixed(2);
+			}
+		}
+	});
+</script>
+</body>
+</html>
